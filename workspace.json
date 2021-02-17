@@ -19,25 +19,27 @@
       }
     }
   },
-  "defaultProject": "court-a[[",
+  "defaultProject": "court-app",
   "projects": {
-    "court-a[[": {
-      "root": "apps/court-a[[",
-      "sourceRoot": "apps/court-a[[/src",
+    "court-app": {
+      "root": "apps/court-app",
+      "sourceRoot": "apps/court-app/src",
       "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
-            "outputPath": "dist/apps/court-a[[",
-            "index": "apps/court-a[[/src/index.html",
-            "main": "apps/court-a[[/src/main.tsx",
-            "polyfills": "apps/court-a[[/src/polyfills.ts",
-            "tsConfig": "apps/court-a[[/tsconfig.app.json",
+            "outputPath": "dist/apps/court-app",
+            "index": "apps/court-app/src/index.html",
+            "main": "apps/court-app/src/main.tsx",
+            "polyfills": "apps/court-app/src/polyfills.ts",
+            "tsConfig": "apps/court-app/tsconfig.app.json",
             "assets": [
-              "apps/court-a[[/src/favicon.ico",
-              "apps/court-a[[/src/assets"
+              "apps/court-app/src/favicon.ico",
+              "apps/court-app/src/assets"
             ],
             "styles": [],
             "scripts": [],
@@ -47,8 +49,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/court-a[[/src/environments/environment.ts",
-                  "with": "apps/court-a[[/src/environments/environment.prod.ts"
+                  "replace": "apps/court-app/src/environments/environment.ts",
+                  "with": "apps/court-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -71,52 +73,83 @@
         "serve": {
           "executor": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "court-a[[:build"
+            "buildTarget": "court-app:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "court-a[[:build:production"
+              "buildTarget": "court-app:build:production"
             }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/court-a[[/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/court-app/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/court-a[["],
+          "outputs": [
+            "coverage/apps/court-app"
+          ],
           "options": {
-            "jestConfig": "apps/court-a[[/jest.config.js",
+            "jestConfig": "apps/court-app/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "court-a[[-e2e": {
-      "root": "apps/court-a[[-e2e",
-      "sourceRoot": "apps/court-a[[-e2e/src",
+    "court-app-e2e": {
+      "root": "apps/court-app-e2e",
+      "sourceRoot": "apps/court-app-e2e/src",
       "projectType": "application",
       "targets": {
         "e2e": {
           "executor": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/court-a[[-e2e/cypress.json",
-            "tsConfig": "apps/court-a[[-e2e/tsconfig.e2e.json",
-            "devServerTarget": "court-a[[:serve"
+            "cypressConfig": "apps/court-app-e2e/cypress.json",
+            "tsConfig": "apps/court-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "court-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "court-a[[:serve:production"
+              "devServerTarget": "court-app:serve:production"
             }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/court-a[[-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/court-app-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "ui": {
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ui/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/ui"
+          ],
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

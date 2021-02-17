@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/apps/court-a[['],
+  projects: ['<rootDir>/apps/court-app', '<rootDir>/libs/ui'],
 };

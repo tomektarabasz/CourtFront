@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'court-a[[',
+  displayName: 'court-app',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
@@ -9,5 +9,5 @@ module.exports = {
     ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/court-a[[',
+  coverageDirectory: '../../coverage/apps/court-app',
 };

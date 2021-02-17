@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('court-a[[', () => {
+describe('court-app', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
@@ -8,6 +8,6 @@ describe('court-a[[', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to court-a[[!');
+    getGreeting().contains('Welcome to court-app!');
   });
 });

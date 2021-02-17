@@ -16,7 +16,8 @@
     }
   },
   "projects": {
-    "court-a[[": { "tags": [] },
-    "court-a[[-e2e": { "tags": [], "implicitDependencies": ["court-a[["] }
+    "court-app": { "tags": [] },
+    "court-app-e2e": { "tags": [], "implicitDependencies": ["court-app"] },
+    "ui": { "tags": [] }
   }
 }
