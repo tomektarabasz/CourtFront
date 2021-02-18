@@ -6,6 +6,7 @@ import {
   } from '@material-ui/core';
 import clsx from 'clsx';
 import { Background, useStyles } from './Home.styled';
+import { getCities } from "@api/cityApi";
 
 export const Home: React.FC = () => {
   const classes = useStyles();
@@ -15,6 +16,7 @@ export const Home: React.FC = () => {
   const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
       if(event.key === "Enter") {
           alert("evet.key")
+          getCities()
       }
   }
   return (
