@@ -11,6 +11,7 @@ import { rootCertificates } from 'tls';
 import Item from './item/item';
 
 import { ReactComponent as Logo } from './logo.svg';
+import { Home } from './pages/Home/Home';
 import star from './star.svg';
 
 const StyledApp = styled.div`
@@ -237,10 +238,7 @@ export function App() {
             </main>
           </StyledApp>
         </Route>
-        <Route path="/">
-          <Item>
-            To co tam bylo
-          </Item>
+        <Route path="/" component={Home}>
         </Route>
     </Switch>
     </BrowserRouter>
