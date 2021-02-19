@@ -14,23 +14,17 @@ export const Background = styled.div`
   align-items:center;
 `;
 
-
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     cities: {
-      minWidth:600
-    },
-    margin: {
-      margin: theme.spacing(1),
-    },
-    withoutLabel: {
-      marginTop: theme.spacing(3),
-    },
-    textField: {
-      width: '25ch',
+      display:"flex",
+      maxWidth:"600px",
+      minWidth:"120px",
+      flexDirection:"column",
     },
     inputBackground: {
       backgroundColor: 'white',
+      opacity:0.7,
     },
 
   })

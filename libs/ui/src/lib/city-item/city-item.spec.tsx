@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Item from './item';
+import CityItem from './city-item';
 
-describe('Item', () => {
+describe('CityItem', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Item />);
+    const { baseElement } = render(<CityItem />);
     expect(baseElement).toBeTruthy();
   });
 });

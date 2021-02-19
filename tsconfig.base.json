@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@api/*": ["/apps/court-app/src/app/api/*"],
       "@court-front/ui": ["libs/ui/src/index.ts"]
     }
   },

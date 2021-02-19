@@ -3,16 +3,17 @@ import { FilledInput, FormControl, InputLabel } from '@material-ui/core';
 import clsx from 'clsx';
 import { Background, useStyles } from './Home.styled';
 import { City, getCities } from '@api/cityApi';
+import { CitySearchResult } from '../../components/city-search-result';
 
 export const Home: React.FC = () => {
   const classes = useStyles();
   const [cities, setCities] = useState([] as City[]);
   const handleBlur = (event) => {
-    getCities(event.target.value,setCities);
+    getCities(event.target.value, setCities);
   };
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      getCities(event.target.value,setCities);
+      getCities(event.target.value, setCities);
     }
   };
   return (
@@ -21,7 +22,6 @@ export const Home: React.FC = () => {
         <FormControl
           className={clsx(
             classes.cities,
-            classes.textField,
             classes.inputBackground
           )}
           variant="filled"
@@ -34,9 +34,7 @@ export const Home: React.FC = () => {
             onKeyPress={handleKeyPress}
           />
         </FormControl>
-        {cities && cities.map(
-            (city) => <div>{city.name}</div>
-          )}
+        <CitySearchResult cities={cities} />
       </div>
     </Background>
   );

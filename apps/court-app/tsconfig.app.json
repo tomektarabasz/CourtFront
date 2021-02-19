@@ -3,10 +3,6 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "types": ["node"],
-    "baseUrl": "./src/app",
-      "paths": {
-        "@api/*": ["./api/*"],
-      }
   },
   "files": [
     "../../node_modules/@nrwl/react/typings/cssmodule.d.ts",
