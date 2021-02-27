@@ -1,11 +1,14 @@
 import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import React from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import styled from 'styled-components';
+import { setSelectedCity } from '../api/state/actions';
+import { AppState } from '../api/state/types';
 
 /* eslint-disable-next-line */
 export interface CityItemProps {
+  id: string;
   name: string;
   region?: string;
   province?: string;
@@ -47,17 +50,19 @@ export const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export function CityItem({ name, region, province, area }: CityItemProps) {
+export function CityItem({ id, name, region, province, area }: CityItemProps) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(setSelectedCity);
-  };
+  const selectedCity = useSelector<AppState>((state) => state.selectedCity);
+  const handleClick = useCallback(() => {
+    dispatch(setSelectedCity(id));
+  }, [id, dispatch]);
+  const isSelected = id === selectedCity;
   return (
     <StyledCityItem>
       <Button
         variant="outlined"
-        color="primary"
+        color={isSelected ? 'secondary' : 'primary'}
         className={clsx(classes.button)}
         onClick={handleClick}
       >

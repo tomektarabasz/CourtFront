@@ -26,6 +26,5 @@ export const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: 'white',
       opacity:0.7,
     },
-
   })
 );

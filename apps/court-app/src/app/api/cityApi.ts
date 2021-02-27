@@ -1,20 +1,27 @@
-import axios from "axios"
+import axios from 'axios';
 
-export type City = {
-  _id:string,
-  name: string,
-  key: string,
-  wojewodztwo: string,
-  powiat: string,
-  gmina: string,
-}
+export const getCities = async (queryCity?:string) => {
+  const cancelationToken = axios.CancelToken.source();
+  const requestPromise = axios.get('http://192.168.1.143:80/all', {
+    params: { cityName: queryCity },
+    cancelToken: cancelationToken.token,
+  });
+  const response = await requestPromise;
+  return {
+    response,
+    cancelationToken,
+  };
+};
 
-export const getCities = (queryCity,callback) => {
-    console.log(queryCity)
-    axios.get("http://0.0.0.0:80/all",{
-          }).then(
-            (response)=>{
-              callback(response.data)
-            }
-          )
-}
+export const getCourts = async (cityId) => {
+  const cancelationToken = axios.CancelToken.source();
+  const requestPromise = axios.get('http://192.168.1.143:80/all', {
+    params: { cityId: cityId },
+    cancelToken: cancelationToken.token,
+  });
+  const response = await requestPromise;
+  return {
+    response,
+    cancelationToken,
+  };
+};
