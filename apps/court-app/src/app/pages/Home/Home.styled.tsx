@@ -7,7 +7,8 @@ import {
 import background from '../../../background.jpeg';
 
 export const Background = styled.div`
-  height: 100%;
+  padding:10vh;
+  height: 80%;
   background-image: url(${background});
   display:flex;
   justify-content:center;

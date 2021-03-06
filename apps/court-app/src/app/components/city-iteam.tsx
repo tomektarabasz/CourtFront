@@ -1,12 +1,13 @@
 import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import styled from 'styled-components';
 import { setSelectedCity } from '../api/state/actions';
 import { AppState } from '../api/state/types';
+import { LayoutNameDetail } from './layout-name-detail';
 
-/* eslint-disable-next-line */
 export interface CityItemProps {
   id: string;
   name: string;
@@ -27,6 +28,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       minWidth: '100%',
       flexDirection: 'column',
       margin: '1.2ch 0 0 0',
+      backgroundColor: 'rgba(68, 70, 92, 0.2)'
     },
     layout: {
       display: 'flex',
@@ -56,7 +58,11 @@ export function CityItem({ id, name, region, province, area }: CityItemProps) {
   const selectedCity = useSelector<AppState>((state) => state.selectedCity);
   const handleClick = useCallback(() => {
     dispatch(setSelectedCity(id));
+    browserHistory.push(`/selected/${id}`)
   }, [id, dispatch]);
+
+  const browserHistory = useHistory()
+
   const isSelected = id === selectedCity;
   return (
     <StyledCityItem>
@@ -66,12 +72,7 @@ export function CityItem({ id, name, region, province, area }: CityItemProps) {
         className={clsx(classes.button)}
         onClick={handleClick}
       >
-        <div className={classes.layout}>
-          <div className={classes.nameStyle}>{name}</div>
-          <div className={classes.details}>
-            {region + '-' + province + '-' + area}
-          </div>
-        </div>
+        <LayoutNameDetail name={name} details={region + '-' + province + '-' + area}/>
       </Button>
     </StyledCityItem>
   );

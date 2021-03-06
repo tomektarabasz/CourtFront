@@ -1,6 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { setSelectedCity } from '../api/state/actions';
 import CityItem from './city-iteam';
 
 const Ul = styled.ul`
@@ -8,8 +9,20 @@ const Ul = styled.ul`
   margin: 0;
 `;
 
-export const CityList: React.FC = () => {
+interface CityListProps {
+  selectedCityId: string;
+}
+
+export const CityList: React.FC<CityListProps> = ({ selectedCityId }) => {
   const cities = useSelector((state) => state.cities);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (selectedCityId) {
+      dispatch(setSelectedCity(selectedCityId));
+    }
+  }, []);
+
   if (cities?.length < 1 || cities == null) {
     return null;
   }

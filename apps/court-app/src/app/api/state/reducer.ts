@@ -25,5 +25,5 @@ export const appReducer = createReducer<AppState, AppActions>(initialState)
   }))
   .handleAction(actions.setCourts, (state, action) => ({
     ...state,
-    setCourts: action.payload,
+    courts: action.payload,
   }));

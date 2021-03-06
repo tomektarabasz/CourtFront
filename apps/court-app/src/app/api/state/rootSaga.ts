@@ -1,6 +1,6 @@
 import { call, put, all, takeLatest, select } from 'redux-saga/effects';
 import { getCities, getCourts } from '../cityApi';
-import { setCities, setCityQuery, setSelectedCity } from './actions';
+import { setCities, setCityQuery, setCourts, setSelectedCity } from './actions';
 
 const listOfEffectsForCities = [setCityQuery];
 const listOfEffectsForCourts = [setSelectedCity];
@@ -24,7 +24,7 @@ function* makeCourtRequest(action) {
   const selectedCity = yield select((state)=>state.selectedCity)
   try {
     const { response } = yield call(apiRequest, selectedCity);
-    yield put(setCities(response.data));
+    yield put(setCourts(response.data));
   } catch (exception) {
     console.log(exception);
   }

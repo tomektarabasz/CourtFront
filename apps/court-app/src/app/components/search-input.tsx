@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RouteChildrenProps } from 'react-router-dom';
+import { RouteChildrenProps, useHistory } from 'react-router-dom';
 import {
   createStyles,
   FilledInput,
@@ -30,34 +30,44 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const SearchInput: React.FC<RouteChildrenProps<{ id: string }>> = ({
-  match,
-}) => {
-  const [cancelationToken, setCancelationToken] = useState<
-    undefined | CancelTokenSource
-  >();
-  console.log({ match });
+interface SearchInputProps {
+  queryCityName: string;
+}
+
+export const SearchInput: React.FC<SearchInputProps> = ({ queryCityName }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const selectedCity = useSelector<AppState>((state) => state.selectedCity);
-  const makeRequestToApi = useCallback(
+  const browserHistory = useHistory();
+  const handleSearchStart = useCallback(
     (event) => {
-      dispatch(setCityQuery(event.target.value));
+      const value = event.target.value;
+      dispatch(setCityQuery(value));
+      browserHistory.push({
+        pathname: `/search/${value}`,
+      });
     },
     [dispatch]
   );
 
-  const handleBlur = makeRequestToApi;
+  useEffect(() => {
+    if (queryCityName) {
+      handleSearchStart({ target: { value: queryCityName } });
+    }
+  }, []);
+
+  const handleBlur = handleSearchStart;
 
   const handleKeyPress = useCallback(
     (event) => {
       if (event.key === 'Enter') {
-        makeRequestToApi(event);
+        handleSearchStart(event);
       }
     },
-    [makeRequestToApi]
+    [handleSearchStart]
   );
 
+  console.log(queryCityName);
   return (
     <div className={classes.cities}>
       <FormControl
@@ -70,6 +80,7 @@ export const SearchInput: React.FC<RouteChildrenProps<{ id: string }>> = ({
           type={'text'}
           onBlur={handleBlur}
           onKeyPress={handleKeyPress}
+          defaultValue={queryCityName}
         />
       </FormControl>
     </div>

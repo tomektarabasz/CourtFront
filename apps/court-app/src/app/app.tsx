@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@material-ui/core';
+import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -16,12 +17,15 @@ export function App() {
     <Background>
       <Provider store={store}>
         <ThemeProvider theme={customeThemeResponsive}>
-          <BrowserRouter>
-            <Switch>
-              <Route path={searchCity()} component={Home} />
-              <Route path="/*" component={Home} />
-            </Switch>
-          </BrowserRouter>
+          <StyledComponentsThemeProvider theme={customeThemeResponsive}>
+            <BrowserRouter>
+              <Switch>
+                <Route path={'/selected/:selectedCityId'} component={Home} />
+                <Route path={'/search/:queryCityName'} component={Home} />
+                <Route path="/*" component={Home} />
+              </Switch>
+            </BrowserRouter>
+          </StyledComponentsThemeProvider>
         </ThemeProvider>
       </Provider>
     </Background>

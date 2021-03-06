@@ -1,1 +1,1 @@
-export const searchCity = (id?: string): string => `/search/city/${id || ":id"}`;
+export const searchCity = `/:queryCityName`;

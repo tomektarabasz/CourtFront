@@ -22,8 +22,5 @@ export type City = {
 export type Court = {
   _id: string;
   name: string;
-  key: string;
-  wojewodztwo: string;
-  powiat: string;
-  gmina: string;
+  coverArea:string;
 };
