@@ -11,19 +11,15 @@ const Ul = styled.ul`
 
 export const CourtList: React.FC = () => {
   const courts = useSelector((state) => state.courts);
-
   if (courts?.length < 1 || courts == null) {
     return null;
   }
   return (
     <>
+      {console.log({ courts })}
       {courts.map((court) => (
         <Ul key={court._id}>
-          <Court
-            id={court._id}
-            name={court.name}
-            coverArea={court.coverArea}
-          />
+          <Court id={court._id} name={court.name} coverArea={court.coverArea} />
         </Ul>
       ))}
     </>

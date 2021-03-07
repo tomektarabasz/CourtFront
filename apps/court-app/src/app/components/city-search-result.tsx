@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { setSelectedCity } from '../api/state/actions';
+import { AppState, City } from '../api/state/types';
 import CityItem from './city-iteam';
 
 const Ul = styled.ul`
@@ -14,7 +15,7 @@ interface CityListProps {
 }
 
 export const CityList: React.FC<CityListProps> = ({ selectedCityId }) => {
-  const cities = useSelector((state) => state.cities);
+  const cities: City[] = useSelector((state: AppState) => state.cities);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,6 +27,23 @@ export const CityList: React.FC<CityListProps> = ({ selectedCityId }) => {
   if (cities?.length < 1 || cities == null) {
     return null;
   }
+
+  if (selectedCityId) {
+    const selectedCity: City | undefined =
+      cities.find((city) => city._id === selectedCityId);
+    return (
+      selectedCity && (
+        <CityItem
+          id={selectedCity._id}
+          name={selectedCity.name}
+          region={selectedCity.wojewodztwo}
+          province={selectedCity.powiat}
+          area={selectedCity.gmina}
+        />
+      )
+    );
+  }
+
   return (
     <>
       {cities.map((city) => (

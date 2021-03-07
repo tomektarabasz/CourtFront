@@ -19,6 +19,7 @@ export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     cities: {
       display:"flex",
+      margin:"auto",
       maxWidth:"600px",
       minWidth:"120px",
       flexDirection:"column",
