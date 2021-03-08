@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { setSelectedCity } from '../api/state/actions';
+import { getCityById } from '../api/cityApi';
+import { setCities, setSelectedCity } from '../api/state/actions';
 import { AppState, City } from '../api/state/types';
 import CityItem from './city-iteam';
 
@@ -20,6 +21,10 @@ export const CityList: React.FC<CityListProps> = ({ selectedCityId }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (selectedCityId) {
+      const cityResponse = getCityById(selectedCityId);
+      cityResponse.then(({response}) => {
+        return dispatch(setCities([response.data]));
+      })
       dispatch(setSelectedCity(selectedCityId));
     }
   }, []);
@@ -30,7 +35,7 @@ export const CityList: React.FC<CityListProps> = ({ selectedCityId }) => {
 
   if (selectedCityId) {
     const selectedCity: City | undefined =
-      cities.find((city) => city._id === selectedCityId);
+      cities?.find((city) => city._id === selectedCityId);
     return (
       selectedCity && (
         <CityItem

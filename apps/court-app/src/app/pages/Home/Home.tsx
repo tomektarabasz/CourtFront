@@ -11,13 +11,12 @@ type UrlParams = {
   selectedCityId?: string;
 };
 
-export const Home: React.FC<RouteChildrenProps<UrlParams>> = ({ match }) => {
+export const Home: React.FC<RouteChildrenProps<UrlParams>> = ({ match,children }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.cities}>
         <SearchInput queryCityName={match.params.queryCityName} />
-        <CityList selectedCityId={match.params.selectedCityId} />
-        <CourtList />
+        {children}
     </Paper>
   );
 };

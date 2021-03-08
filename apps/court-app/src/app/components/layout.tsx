@@ -22,7 +22,7 @@ const Shadow = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   width: 100%;
-  height: "fit-content";
+  height: fit-content;
   margin: -80vh auto;
   justify-content: center;
 `;

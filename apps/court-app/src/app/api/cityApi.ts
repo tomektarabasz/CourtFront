@@ -29,3 +29,14 @@ export const getCourts = async (cityId) => {
     cancelationToken,
   };
 };
+
+export const getCityById = async (cityId) => {
+  
+  const requestPromise = axios.get(cityId, {
+    baseURL: baseUrl+'city/',
+  });
+  const response = await requestPromise;
+  return {
+    response,
+  };
+}
