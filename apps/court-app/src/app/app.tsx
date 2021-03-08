@@ -8,13 +8,13 @@ import { searchCity } from './api/router/paths';
 import { createAppStore } from './api/state/store';
 
 import { Home } from './pages/Home/Home';
-import { Background } from './pages/Home/Home.styled';
+import { Layout } from './components/layout';
 
 const store = createAppStore();
 
 export function App() {
   return (
-    <Background>
+    <Layout>
       <Provider store={store}>
         <ThemeProvider theme={customeThemeResponsive}>
           <StyledComponentsThemeProvider theme={customeThemeResponsive}>
@@ -28,7 +28,7 @@ export function App() {
           </StyledComponentsThemeProvider>
         </ThemeProvider>
       </Provider>
-    </Background>
+    </Layout>
   );
 }
 
