@@ -1,5 +1,5 @@
 import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useCallback } from 'react';
 import clsx from 'clsx';
@@ -28,7 +28,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       minWidth: '100%',
       flexDirection: 'column',
       margin: '1.2ch 0 0 0',
-      backgroundColor: 'rgba(68, 70, 92, 0.2)'
+      backgroundColor: 'rgba(68, 70, 92, 0.2)',
     },
     layout: {
       display: 'flex',
@@ -40,14 +40,18 @@ export const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       justifyContent: 'center',
     },
-    details: {
+    topDetails: {
       display: 'flex',
+      padding:'1.2ch',
       flexGrow: 1,
       width: '100%',
       color: 'black-gray',
       fontSize: '0.9ch',
-      justifyContent: 'flex-end',
-      alignItems: 'flex-end',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+    },
+    label: {
+      display:"inline",
     },
   })
 );
@@ -58,10 +62,10 @@ export function CityItem({ id, name, region, province, area }: CityItemProps) {
   const selectedCity = useSelector<AppState>((state) => state.selectedCity);
   const handleClick = useCallback(() => {
     dispatch(setSelectedCity(id));
-    browserHistory.push(`/selected/${id}`)
+    browserHistory.push(`/selected/${id}`);
   }, [id, dispatch]);
 
-  const browserHistory = useHistory()
+  const browserHistory = useHistory();
 
   const isSelected = id === selectedCity;
   return (
@@ -71,8 +75,13 @@ export function CityItem({ id, name, region, province, area }: CityItemProps) {
         color={isSelected ? 'secondary' : 'primary'}
         className={clsx(classes.button)}
         onClick={handleClick}
+        classes={{ label: classes.label }}
       >
-        <LayoutNameDetail name={name} details={region + '-' + province + '-' + area}/>
+        <div className={classes.topDetails}>{area}</div>
+        <LayoutNameDetail
+          name={name}
+          details={region + '-' + province + '-' + area}
+        />
       </Button>
     </StyledCityItem>
   );
