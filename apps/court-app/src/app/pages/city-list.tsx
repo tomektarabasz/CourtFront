@@ -1,7 +1,7 @@
 import React from 'react';
-import { CityList } from '../../components/city-search-result';
+import { CityList } from '../components/city-search-result';
 import { RouteChildrenProps } from 'react-router-dom';
-import { Home } from './Home';
+import { Home } from './home';
 
 
 type UrlParams = {

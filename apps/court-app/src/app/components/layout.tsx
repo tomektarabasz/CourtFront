@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Background } from '../pages/Home/Home.styled';
+import { Background } from '../pages/home.styled';
 import { Logo } from './logo';
 import logo from '../../logo.jpeg';
 

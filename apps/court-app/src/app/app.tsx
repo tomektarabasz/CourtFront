@@ -6,10 +6,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { customeThemeResponsive } from '../assets/customeTheme';
 import { createAppStore } from './api/state/store';
 
-import { Home } from './pages/Home/Home';
+import { Home } from './pages/home';
 import { Layout } from './components/layout';
-import { CityListPage } from './pages/Home/city-list';
-import { CourtListPage } from './pages/Home/court-list';
+import { CityListPage } from './pages/city-list';
+import { CourtListPage } from './pages/court-list';
 
 const store = createAppStore();
 

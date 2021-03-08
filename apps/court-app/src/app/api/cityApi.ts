@@ -19,8 +19,7 @@ export const getCities = async (queryCity?:string) => {
 export const getCourts = async (cityId) => {
   const cancelationToken = axios.CancelToken.source();
   const requestPromise = axios.get(cityId, {
-    baseURL: baseUrl+'court/',  
-    // params: { cityId: cityId },
+    baseURL: baseUrl+'court/',
     cancelToken: cancelationToken.token,
   });
   const response = await requestPromise;
