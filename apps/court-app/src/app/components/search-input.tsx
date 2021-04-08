@@ -15,6 +15,14 @@ import { setCities, setCityQuery } from '../api/state/actions';
 import { AppState } from '../api/state/types';
 import { CancelTokenSource } from 'axios';
 
+import styled from "styled-components"
+
+const TT = styled(FilledInput)`
+  border: 3px solid red;
+  padding:20px;
+  margin: 30px;
+`
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     cities: {
@@ -83,6 +91,14 @@ export const SearchInput: React.FC<SearchInputProps> = ({ queryCityName }) => {
           defaultValue={queryCityName}
         />
       </FormControl>
+
+      <TT
+          id="city-input"
+          type={'text'}
+          onBlur={handleBlur}
+          onKeyPress={handleKeyPress}
+          defaultValue={queryCityName}
+        />
     </div>
   );
 };
