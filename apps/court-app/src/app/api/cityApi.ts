@@ -1,7 +1,8 @@
 import axios from 'axios';
+const baseUrl = 'http://localhost:80/'
 // const baseUrl = 'http://192.168.1.143:80/'
 // const baseUrl = 'http://192.168.1.17:8000/'
-const baseUrl = 'http://89.65.210.136:8000/'
+// const baseUrl = 'http://89.65.210.136:8000/'
 
 export const getCities = async (queryCity?:string) => {
   const cancelationToken = axios.CancelToken.source();

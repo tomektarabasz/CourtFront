@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { AppState } from '../api/state/types';
-import CityItem from './city-iteam';
 import { Court } from './court-iteam';
 
 const Ul = styled.ul`

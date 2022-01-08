@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { BrowserRouter, NavLink } from 'react-router-dom';
 import { Background } from '../pages/home.styled';
 import { Logo } from './logo';
 import logo from '../../logo.jpeg';
+import { UserAuth } from './users-authentication/user-auth';
 
 const MainWrapper = styled.div`
   height: 100%;
@@ -15,8 +17,9 @@ const Shadow = styled.div`
   background-image: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 1)
+    rgba(255, 255, 255, 1) ;
   );
+  display: flex;
 `;
 
 const ContentWrapper = styled.div`
@@ -29,15 +32,20 @@ const ContentWrapper = styled.div`
 
 export const Layout: React.FC = ({ children }) => {
   return (
-    <MainWrapper>
-      <Background>
-        <Shadow>
-          <Logo>
-            <img src={logo} alt={'logo'} />
-          </Logo>
-        </Shadow>
-      </Background>
-      <ContentWrapper>{children}</ContentWrapper>
-    </MainWrapper>
+    <BrowserRouter>
+      <MainWrapper>
+        <Background>
+          <Shadow>
+            <Logo>
+              <NavLink to={'/'}>
+                <img src={logo} alt={'logo'} />
+              </NavLink>
+            </Logo>
+            <UserAuth />
+          </Shadow>
+        </Background>
+        <ContentWrapper>{children}</ContentWrapper>
+      </MainWrapper>
+    </BrowserRouter>
   );
 };

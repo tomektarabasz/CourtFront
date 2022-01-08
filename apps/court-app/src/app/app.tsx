@@ -10,6 +10,7 @@ import { Home } from './pages/home';
 import { Layout } from './components/layout';
 import { CityListPage } from './pages/city-list';
 import { CourtListPage } from './pages/court-list';
+import { SignInPage } from './pages/sign-in';
 
 const store = createAppStore();
 
@@ -19,13 +20,16 @@ export function App() {
       <Provider store={store}>
         <ThemeProvider theme={customeThemeResponsive}>
           <StyledComponentsThemeProvider theme={customeThemeResponsive}>
-            <BrowserRouter>
-              <Switch>
-                <Route path={'/selected/:selectedCityId'} component={CourtListPage} />
-                <Route path={'/search/:queryCityName'} component={CityListPage} />
-                <Route path="/*" component={Home} />
-              </Switch>
-            </BrowserRouter>
+            <Switch>
+              <Route
+                path={'/selected/:selectedCityId'}
+                component={CourtListPage}
+              />
+              <Route path={'/search/:queryCityName'} component={CityListPage} />
+              <Route path={"/login"} component={Home} />
+              <Route path={"/signin"} component={SignInPage} />
+              <Route path="/*" component={Home} />
+            </Switch>
           </StyledComponentsThemeProvider>
         </ThemeProvider>
       </Provider>
