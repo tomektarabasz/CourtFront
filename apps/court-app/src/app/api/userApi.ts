@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-const baseUrl = 'http://localhost:8000/';
+const baseUrl = 'http://localhost:80/';
 // const baseUrl = 'http://192.168.1.143:80/'
 // const baseUrl = 'http://192.168.1.17:8000/'
 // const baseUrl = 'http://89.65.210.136:8000/'
@@ -38,7 +38,7 @@ export const createUser = async (
   return response as AxiosResponse<CreateUserResponse>;
 };
 
-type CheckUserIdentity = {
+export type CheckUserIdentity = {
   authenticated:boolean,
   score:number
 };

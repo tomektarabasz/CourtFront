@@ -11,6 +11,7 @@ import { Layout } from './components/layout';
 import { CityListPage } from './pages/city-list';
 import { CourtListPage } from './pages/court-list';
 import { SignInPage } from './pages/sign-in';
+import { Login } from './pages/login';
 
 const store = createAppStore();
 
@@ -26,8 +27,8 @@ export function App() {
                 component={CourtListPage}
               />
               <Route path={'/search/:queryCityName'} component={CityListPage} />
-              <Route path={"/login"} component={Home} />
-              <Route path={"/signin"} component={SignInPage} />
+              <Route path={'/login'} component={Login} />
+              <Route path={'/signin'} component={SignInPage} />
               <Route path="/*" component={Home} />
             </Switch>
           </StyledComponentsThemeProvider>
